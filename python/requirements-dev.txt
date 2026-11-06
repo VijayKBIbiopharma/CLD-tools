@@ -1,0 +1,2 @@
+# For the test suite only. Not installed in a running container.
+pytest==9.2.0

@@ -103,7 +103,7 @@
      Any column that matches a catalogue factor is ignored with a note - the point of this
      flow is that the tool chooses those, not the sheet. */
   function parseProgram(table, factorNames) {
-    if (!table || !table.rows || !table.rows.length) return { programs: [], ignored: [] };
+    if (!table || !table.rows || !table.rows.length) return { programs: [], ignored: [], skipped: [] };
     const fset = new Set((factorNames || []).map(key));
     const idIdx = table.columns.findIndex(c => ID_PICK.test(norm(c)));
     const ignored = table.columns.filter(c => fset.has(key(c)));

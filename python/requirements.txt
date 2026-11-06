@@ -1,0 +1,9 @@
+# Runtime dependencies: none.
+#
+# The selection logic in boss_vector is arithmetic, string handling and
+# enumeration, all of which the standard library covers. Nothing here needs to be
+# qualified, version-pinned or watched for advisories.
+#
+# Model fitting is the second half of the port and will need a numerical library.
+# That is the point at which a decision is needed about which packages are
+# available, so it is deliberately not pre-empted here.
