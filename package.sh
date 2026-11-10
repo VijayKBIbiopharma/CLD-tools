@@ -6,7 +6,8 @@ cd "$(dirname "$0")"
 VERSION="$(date +%Y.%m.%d)-$(git rev-parse --short HEAD 2>/dev/null || echo local)"
 OUT="dist/boss-intranet-$VERSION"
 rm -rf dist && mkdir -p "$OUT"
-cp index.html learn.html style.css web.config README.md GAPS.md DEMO.md DEPLOY.md "$OUT"/
+cp index.html learn.html style.css web.config GAPS.md DEMO.md DEPLOY.md "$OUT"/
+cp BOSS.md "$OUT"/README.md
 cp engine.js doe.js spc.js methods.js watch.js ichq2.js forecast.js reliability.js particles.js changepoint.js comparability.js theme.js merge.js audit.js applications.js stability.js golden.js tost.js variance.js tolerance.js uncertainty.js departments.js xlsx.js program.js campaign.js fold.js plasmid.js advisor.js advisor-eval.js codon.js ga.js ga-worker.js agent.js samples.js charts.js explain.js pdf.js app.js stab.js golden-ui.js tost-ui.js variance-ui.js tolerance-ui.js advisor-ui.js plasmid-ui.js program-ui.js campaign-ui.js seq.js learn.js "$OUT"/
 cp -r demo-data "$OUT"/
 printf 'BOSS %s\n' "$VERSION" > "$OUT/VERSION.txt"

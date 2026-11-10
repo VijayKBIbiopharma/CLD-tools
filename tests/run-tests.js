@@ -5378,7 +5378,7 @@ test('the lesson plan is complete, ordered, and covers every method the tool rep
    ichq2.js, reliability.js and fold.js - because nothing checked. A table that silently
    drops new modules is worse than no table: it reads as complete. */
 test('every module the build ships is described in the README file table', () => {
-  const readme = fs.readFileSync(path.join(ROOT, 'README.md'), 'utf8');
+  const readme = fs.readFileSync(path.join(ROOT, 'BOSS.md'), 'utf8');
   const sh = fs.readFileSync(path.join(ROOT, 'package.sh'), 'utf8');
   const shipped = (sh.match(/[a-z0-9-]+\.js/g) || []).filter((v, i, a) => a.indexOf(v) === i);
   assert.ok(shipped.length > 30, 'the shipped file list could not be read from package.sh');
@@ -6185,7 +6185,7 @@ test('the header carries the short name and the full one, on both pages', () => 
 });
 
 test('the README figures for the academy match the academy', () => {
-  const readme = fs.readFileSync(path.join(ROOT, 'README.md'), 'utf8');
+  const readme = fs.readFileSync(path.join(ROOT, 'BOSS.md'), 'utf8');
   const src = fs.readFileSync(path.join(ROOT, 'learn.js'), 'utf8');
   const count = (src.match(/^    id: '[a-z0-9-]+',/gm) || []).length;
   const quoted = readme.match(/(\d+)-lesson course/);
