@@ -1,4 +1,4 @@
-name: BOSS tests
+name: tests
 
 on:
   push:
@@ -12,14 +12,31 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # node is needed only by the oracle tests, which run the reference
+      # implementation and require the Python to agree with it. Without node
+      # those tests skip and the rest still run.
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Models, DOE math and privacy lint
-        run: node --test tests/run-tests.js
-      - name: Build intranet package
-        run: ./package.sh
-      - uses: actions/upload-artifact@v4
-        with:
-          name: boss-intranet
-          path: dist/*.zip
+
+      - name: Install test dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Confirm the tool needs nothing at runtime
+        run: |
+          pip install .
+          cd "$(mktemp -d)"
+          python -c "import cld_vector; print('imported with no third-party packages installed')"
+
+      - name: Tests, including agreement with the reference implementation
+        run: pytest -q
+
+      # A suite that passes proves nothing on its own. This plants 42 defects one
+      # at a time and fails if any of them survives the suite.
+      - name: Mutation sweep
+        run: python tests/mutation_sweep.py

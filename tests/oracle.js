@@ -7,10 +7,12 @@
    stdout, so the Python test can run the real engine.js and program.js rather
    than a transcription of them.
 
-   Run from anywhere; the paths are resolved against this file. */
+   Run from anywhere; the paths are resolved against this file. The three files it
+   loads are the only JavaScript in this repository, and they are here to be run by
+   this harness - not to be deployed, read line by line, or ported further. */
 'use strict';
 const path = require('path');
-const ROOT = path.resolve(__dirname, '..', '..');
+const ROOT = path.resolve(__dirname, '..', 'reference');
 const E = require(path.join(ROOT, 'engine.js'));
 const P = require(path.join(ROOT, 'program.js'));
 
