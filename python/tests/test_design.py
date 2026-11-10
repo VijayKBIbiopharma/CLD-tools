@@ -9,8 +9,8 @@ import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import fixtures                                                        # noqa: E402
-from boss_vector import program, table                                 # noqa: E402
-from boss_vector.design import aliasing, pair_table, worst_case        # noqa: E402
+from cld_vector import program, table                                 # noqa: E402
+from cld_vector.design import aliasing, pair_table, worst_case        # noqa: E402
 
 AXES = [{"name": "A", "values": ["a1", "a2", "a3"]},
         {"name": "B", "values": ["b1", "b2", "b3"]}]
@@ -96,7 +96,7 @@ def test_a_randomised_tie_break_removes_the_aliasing():
     greedy rule minimises the summed count over factors, which can leave one
     three-level factor at 5/4/3 when that choice balances the others better.
     """
-    from boss_vector.rng import rng
+    from cld_vector.rng import rng
     factors = program.parse_catalogue(table.parse_csv(fixtures.CATALOGUE_WIDE))["factors"]
     cand = program.candidates(factors, {})
 
@@ -122,7 +122,7 @@ def test_a_randomised_tie_break_removes_the_aliasing():
 def test_eight_wells_is_reported_rather_than_hidden():
     """The sheets that stay aliased on a short budget must say so. One of the
     seeds the sweep above counts as confounded, checked end to end."""
-    from boss_vector.rng import rng
+    from cld_vector.rng import rng
     factors = program.parse_catalogue(table.parse_csv(fixtures.CATALOGUE_WIDE))["factors"]
     cand = program.candidates(factors, {})
     found = None

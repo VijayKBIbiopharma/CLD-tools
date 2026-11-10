@@ -33,14 +33,14 @@ from .program import (
 )
 from .table import read_table
 
-log = logging.getLogger("boss_vector")
+log = logging.getLogger("cld_vector")
 
 
 def configure_logging(verbose=False):
     """One stream handler on stdout. Called once, from main."""
     handler = logging.StreamHandler(stream=sys.stdout)
     handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)-7s %(message)s"))
-    root = logging.getLogger("boss_vector")
+    root = logging.getLogger("cld_vector")
     root.handlers[:] = [handler]
     root.setLevel(logging.DEBUG if verbose else logging.INFO)
     root.propagate = False
@@ -48,7 +48,7 @@ def configure_logging(verbose=False):
 
 def build_parser():
     parser = argparse.ArgumentParser(
-        prog="boss-vector",
+        prog="cld-vector",
         description="Vector selection from historical runs and a parts catalogue.",
     )
     parser.add_argument("--history", required=True,
@@ -62,14 +62,14 @@ def build_parser():
     parser.add_argument("--runs", type=int, default=12, help="wells available (default 12)")
     parser.add_argument("--seed", type=int, default=29, help="run-order seed (default 29)")
     parser.add_argument("--verbose", action="store_true")
-    parser.add_argument("--version", action="version", version="boss-vector %s" % __version__)
+    parser.add_argument("--version", action="version", version="cld-vector %s" % __version__)
     return parser
 
 
 def main(argv=None):
     args = build_parser().parse_args(argv)
     configure_logging(args.verbose)
-    log.info("boss-vector %s", __version__)
+    log.info("cld-vector %s", __version__)
 
     history = read_table(args.history)
     prof = profile(history)

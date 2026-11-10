@@ -1,4 +1,4 @@
-/* BOSS tests. Run with: node --test tests/run-tests.js
+/* CLD Tools tests. Run with: node --test tests/run-tests.js
    Covers parsing, models, DOE math, the agent's decisions, and a privacy lint that fails
    if code that could send or store data is ever added. */
 'use strict';
@@ -5378,7 +5378,7 @@ test('the lesson plan is complete, ordered, and covers every method the tool rep
    ichq2.js, reliability.js and fold.js - because nothing checked. A table that silently
    drops new modules is worse than no table: it reads as complete. */
 test('every module the build ships is described in the README file table', () => {
-  const readme = fs.readFileSync(path.join(ROOT, 'BOSS.md'), 'utf8');
+  const readme = fs.readFileSync(path.join(ROOT, 'BROWSER-TOOL.md'), 'utf8');
   const sh = fs.readFileSync(path.join(ROOT, 'package.sh'), 'utf8');
   const shipped = (sh.match(/[a-z0-9-]+\.js/g) || []).filter((v, i, a) => a.indexOf(v) === i);
   assert.ok(shipped.length > 30, 'the shipped file list could not be read from package.sh');
@@ -6162,9 +6162,9 @@ test('the technique list opens unchosen, and Six Sigma is the first thing offere
    Both are in the header of both pages, and the full one is pinned here because a subtitle is
    exactly the kind of thing that gets dropped in a later tidy-up without anybody noticing. */
 test('the header carries the short name and the full one, on both pages', () => {
-  const FULL = 'Biopharma Optimization Stats Suite';
+  const FULL = 'Cell line and strain development statistics';
   const css = fs.readFileSync(path.join(ROOT, 'style.css'), 'utf8');
-  for (const [page, short] of [['index.html', 'BOSS'], ['learn.html', 'BOSS Academy']]) {
+  for (const [page, short] of [['index.html', 'CLD Tools'], ['learn.html', 'CLD Tools Academy']]) {
     const html = fs.readFileSync(path.join(ROOT, page), 'utf8');
     const brand = html.slice(html.indexOf('<a class="brand"'), html.indexOf('</a>', html.indexOf('<a class="brand"')));
     assert.ok(brand.indexOf('>' + short + '<') >= 0, page + ': the header must carry the short name "' + short + '"');
@@ -6185,7 +6185,7 @@ test('the header carries the short name and the full one, on both pages', () => 
 });
 
 test('the README figures for the academy match the academy', () => {
-  const readme = fs.readFileSync(path.join(ROOT, 'BOSS.md'), 'utf8');
+  const readme = fs.readFileSync(path.join(ROOT, 'BROWSER-TOOL.md'), 'utf8');
   const src = fs.readFileSync(path.join(ROOT, 'learn.js'), 'utf8');
   const count = (src.match(/^    id: '[a-z0-9-]+',/gm) || []).length;
   const quoted = readme.match(/(\d+)-lesson course/);
@@ -6362,7 +6362,7 @@ test('the academy links out without opening a door', () => {
   assert.ok(/rel="noopener noreferrer"/.test(src), 'external links need rel="noopener noreferrer"');
   assert.ok(/target="_blank"/.test(src), 'external links should not replace the lesson');
   // And the page says, in the lesson, that these leave and need a connection.
-  assert.ok(/leave BOSS and need an internet connection/.test(src), 'the block must say what it costs');
+  assert.ok(/leave CLD Tools and need an internet connection/.test(src), 'the block must say what it costs');
   assert.ok(/nothing is sent anywhere unless you click/.test(src), 'and what it does not cost');
   // The check date is printed, because "verified" without a date is not a claim.
   assert.ok(/CHECKED/.test(src) && /\d{4}/.test(W.CHECKED), 'the date the links were checked must be shown');

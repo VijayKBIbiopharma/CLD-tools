@@ -1,7 +1,7 @@
-# boss-vector
+# cld-vector
 
 Vector selection for biologics programmes: the Python port of the vector bench in
-BOSS (Biopharma Optimization Stats Suite).
+CLD Tools (Cell line and strain development statistics).
 
 Historical runs in, a parts catalogue in, a list of incoming programmes in. Out
 comes what the history can and cannot speak to, which catalogue levels have ever
@@ -53,7 +53,7 @@ python3 tests/mutation_sweep.py       # 42 planted defects, each must fail a tes
 The oracle tests skip if node is not installed, loudly.
 
 Agreeing with the original required reimplementing six JavaScript primitives
-exactly, which `boss_vector/jsnum.py` does with the specification section numbers
+exactly, which `cld_vector/jsnum.py` does with the specification section numbers
 noted. They are not pedantry:
 
 - `String(5.0)` is `"5"` in JavaScript and `"5.0"` in Python. Stringified numbers
@@ -73,7 +73,7 @@ distinguish from the original. It is worth running after any change.
 
 ## The confounding report
 
-`boss_vector/design.py` is new code, not a port. It exists because running the
+`cld_vector/design.py` is new code, not a port. It exists because running the
 ported `run_sheet` with no model behind it produced a sheet that was perfectly
 balanced and completely useless: twelve wells in which CMV appeared only with
 pHelper-A and one copy, EF1a only with pHelper-B and two, and so on. Every
@@ -104,7 +104,7 @@ per sheet.
 ## Running it
 
 ```
-python3 -m boss_vector.cli \
+python3 -m cld_vector.cli \
     --history   examples/history.csv \
     --catalogue examples/catalogue.csv \
     --programs  examples/programs.csv \

@@ -41,11 +41,11 @@ qualification matters less — it matters more, and it is the next one worth fun
 
 ## What is built
 
-**`python/boss_vector`** — vector selection. Phase 1.
+**`python/cld_vector`** — vector selection. Phase 1.
 
 ```
 cd python
-python3 -m boss_vector.cli \
+python3 -m cld_vector.cli \
     --history   examples/history.csv \
     --catalogue examples/catalogue.csv \
     --programs  examples/programs.csv \
@@ -73,7 +73,7 @@ Full detail, including how it is validated: **[`python/README.md`](python/README
 
 ## The JavaScript in this repository is not a deliverable
 
-`BOSS.md` documents a browser-based suite of ten analysis benches that covers these questions
+`BROWSER-TOOL.md` documents a browser-based suite of ten analysis benches that covers these questions
 and about thirty others. It is here, it works, and **it is not what we are proposing to
 deploy.** It is written in JavaScript to run inside a browser tab with no install and no
 server, which is the right shape for a desk and the wrong shape for the platform, which wants
@@ -116,9 +116,9 @@ Stated here rather than discovered later:
 | Path | What it is |
 |---|---|
 | `python/` | The Python tools. Start at `python/README.md`. |
-| `python/boss_vector/` | Vector selection (phase 1). |
+| `python/cld_vector/` | Vector selection (phase 1). |
 | `python/tests/` | The oracle comparison and the mutation sweep. |
-| `BOSS.md` | Documentation for the JavaScript reference implementation. |
+| `BROWSER-TOOL.md` | Documentation for the JavaScript reference implementation. |
 | `*.js`, `index.html`, `learn.html` | The reference implementation itself. |
 | `tests/run-tests.js` | Its 167 tests. `node tests/run-tests.js`. |
 | `releases/` | Packaged zip of the reference implementation, with SHA-256 sums. |

@@ -1,6 +1,6 @@
-# Deploying BOSS on an internal network
+# Deploying CLD Tools on an internal network
 
-BOSS (Biopharma Optimization Stats Suite) is a folder of static files: HTML, CSS and JavaScript. There is no server-side code, no database, no install, no licence key and no internet access needed. Any internal web server that can serve files can host it.
+CLD Tools (Cell line and strain development statistics) is a folder of static files: HTML, CSS and JavaScript. There is no server-side code, no database, no install, no licence key and no internet access needed. Any internal web server that can serve files can host it.
 
 ## What IT needs to know (security summary)
 

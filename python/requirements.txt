@@ -1,6 +1,6 @@
 # Runtime dependencies: none.
 #
-# The selection logic in boss_vector is arithmetic, string handling and
+# The selection logic in cld_vector is arithmetic, string handling and
 # enumeration, all of which the standard library covers. Nothing here needs to be
 # qualified, version-pinned or watched for advisories.
 #

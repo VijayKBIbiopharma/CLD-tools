@@ -7,7 +7,7 @@ generator, which is itself checked against the JavaScript one, so the sheet is
 identical on every machine and on every run.
 """
 
-from boss_vector.rng import rng
+from cld_vector.rng import rng
 
 PROMOTERS = ["CMV", "EF1a", "CAG", "SV40"]
 MARKERS = ["Puromycin", "Hygromycin", "Blasticidin"]

@@ -1,4 +1,4 @@
-"""BOSS vector selection - the Python port of the browser tool's vector bench.
+"""CLD Tools vector selection - the Python port of the browser tool's vector bench.
 
 Scope: the selection logic (catalogue parsing, programme parsing, protein
 transferability, candidate enumeration, level coverage and run-sheet

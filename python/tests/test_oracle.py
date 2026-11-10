@@ -27,8 +27,8 @@ import pytest
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
-from boss_vector import program, table                                    # noqa: E402
-from boss_vector.profile import profile as profile_of                    # noqa: E402
+from cld_vector import program, table                                    # noqa: E402
+from cld_vector.profile import profile as profile_of                    # noqa: E402
 import fixtures                                                        # noqa: E402
 
 ORACLE = os.path.join(HERE, "oracle.js")
@@ -107,7 +107,7 @@ def test_js_string_matches():
     level into two in a run sheet's balance counts, or make one protein look like
     two in a transferability signature.
     """
-    from boss_vector.jsnum import js_string
+    from cld_vector.jsnum import js_string
     values = [
         0, -0.0, 1, 5, 100, 148.0, 3.2, 0.1, 1 / 3, 2 / 3, 1e-5, 1e-6, 1e-7, 1.5e-7,
         1e15, 1e16, 1e20, 1e21, 1e22, 5e-324, 1.7976931348623157e308,
@@ -122,7 +122,7 @@ def test_js_string_matches():
 def test_js_number_matches():
     """``Number(text)`` over what a cell can hold. ``float()`` disagrees on at
     least six of these."""
-    from boss_vector.jsnum import js_number
+    from cld_vector.jsnum import js_number
     texts = [
         "", "   ", "0", "5", "-5", "5.5", ".5", "5.", "1e3", "1E3", "1e-3", "+1",
         "0x1f", "0X1F", "0o17", "0b101", "1_000", "Infinity", "-Infinity", "+Infinity",
@@ -145,7 +145,7 @@ def test_to_fixed_matches():
     rounding rule decides which levels exist. JavaScript rounds a half towards
     +infinity and Python's ``format`` rounds to even.
     """
-    from boss_vector.jsnum import to_fixed
+    from cld_vector.jsnum import to_fixed
     values = [# Exact halves: representable in binary, so the rounding rule decides.
               0.5, -0.5, 1.5, -1.5, 2.5, -2.5, 3.5, -3.5, 0.125, -0.125, 0.375, -0.375,
               0.0625, 1.0625, -1.0625, 0.005, 2.675, 1.005,
@@ -161,7 +161,7 @@ def test_to_fixed_matches():
 def test_object_key_order_matches():
     """``Object.keys`` puts integer-like keys first, ascending. Python keeps
     insertion order. Level frequency ties break on this order."""
-    from boss_vector.jsnum import js_object_keys
+    from cld_vector.jsnum import js_object_keys
     cases = [
         [["10", 1], ["2", 1], ["Ctrl", 1], ["abc", 1]],
         [["b", 1], ["a", 1], ["0", 1]],
@@ -186,7 +186,7 @@ def test_rng_matches():
     sheet printed from here. Seed zero is included because ``rng`` maps it to one
     and the callers above never pass it.
     """
-    from boss_vector.rng import rng, shuffle, js_range
+    from cld_vector.rng import rng, shuffle, js_range
     seeds = [0, 1, 2, 13, 29, 42, 99, 12345, 2 ** 31 - 1, 2 ** 31, 2 ** 32 - 1]
     calls = [{"fn": "rngDraws", "args": [s, 24]} for s in seeds]
     answers = []
@@ -206,7 +206,7 @@ def test_js_trim_matches():
     """``trim`` removes the byte-order mark and keeps the ASCII file separators;
     Python's ``strip`` does the opposite. Both appear in real exports: the mark
     from Excel, the separators from mainframe extracts."""
-    from boss_vector.jsnum import js_trim
+    from cld_vector.jsnum import js_trim
     values = [" CMV ", "\ufeffCMV\ufeff", "\x1cCMV\x1c", "\u00a0CMV\u00a0",
               "\u3000CMV\u3000", "\u2028CMV\u2029", "\tCMV\n", "\x0bCMV\x0c",
               "CMV", "", "   ", "\u200bCMV\u200b"]

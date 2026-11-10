@@ -1,4 +1,4 @@
-/* BOSS orchestrator: decides what kind of problem the data is, runs every suitable
+/* CLD Tools orchestrator: decides what kind of problem the data is, runs every suitable
    model with cross-validation, picks the winner, and writes plain-language findings and
    next steps (including a recommended DOE). Rule-based: no LLM, no network, no storage. */
 (function (root) {
